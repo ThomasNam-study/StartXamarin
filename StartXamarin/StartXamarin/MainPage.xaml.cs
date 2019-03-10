@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using StartXamarin.SubModule.Callphone;
 using StartXamarin.Views.DoToo;
 using Xamarin.Forms;
+using Swiper = StartXamarin.SubModule.Swiper.Swiper;
 
 namespace StartXamarin
 {
@@ -24,6 +25,11 @@ namespace StartXamarin
 		private async void DoToo_OnClicked (object sender, EventArgs e)
 		{
 			await Navigation.PushAsync (Resolver.Resolve<MainView> ());
+		}
+
+		private async void Swiper_OnClicked (object sender, EventArgs e)
+		{
+			await Navigation.PushAsync (new SubModule.Swiper.Swiper ());
 		}
 	}
 }

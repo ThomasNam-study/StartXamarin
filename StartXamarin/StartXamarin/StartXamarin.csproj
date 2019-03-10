@@ -20,6 +20,9 @@
     <EmbeddedResource Update="SubModule\Callphone\CallPhone.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="SubModule\Swiper\Swiper.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\DoToo\ItemView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
