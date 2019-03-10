@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +8,15 @@ namespace StartXamarin
 {
 	public partial class App : Application
 	{
+		public static IList<string> PhoneNumbers { get; set; }
+
 		public App ()
 		{
 			InitializeComponent ();
 
-			MainPage = new MainPage ();
+			PhoneNumbers = new List<string> ();
+
+			MainPage = new NavigationPage(new MainPage ());
 		}
 
 		protected override void OnStart ()

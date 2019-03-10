@@ -4,11 +4,10 @@
              xmlns:local="clr-namespace:StartXamarin"
              x:Class="StartXamarin.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout Orientation="Vertical">
+        <Label Text="Welcome to Xamarin.Forms!" />
+
+		<Button Text ="Show CallPhone" Clicked="CallPhone_OnClicked"/>
     </StackLayout>
 
 </ContentPage>

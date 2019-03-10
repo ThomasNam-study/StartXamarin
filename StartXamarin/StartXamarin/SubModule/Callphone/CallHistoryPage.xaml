@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:app="clr-namespace:StartXamarin;assembly=StartXamarin"
+			 Title="전화 걸기 로그"
+
+             x:Class="StartXamarin.SubModule.Callphone.CallHistoryPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness">
+			<On Platform="IOS" Value="20, 40, 20, 40"></On>
+			<On Platform="Android, UWP" Value="20"></On>
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Content>
+        <ListView ItemsSource="{x:Static app:App.PhoneNumbers}"></ListView>
+    </ContentPage.Content>
+</ContentPage>

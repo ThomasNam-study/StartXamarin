@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StartXamarin.SubModule.Callphone.CallPhone"
+             Title="전화 걸기">
+
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness">
+			<On Platform="iOS" Value="20, 40, 20, 20"></On>
+			<On Platform="Android, UWP" Value = "20"></On>
+		</OnPlatform>
+	</ContentPage.Padding>
+
+	<ContentPage.Content>
+        <StackLayout>
+			<Label Text ="Enter a phoneword:" VerticalOptions="Center"></Label>
+	        <Entry x:Name="phoneNumberText" Text="1-855-XAMARIN"></Entry>
+
+	        <Button Text="Translate" Clicked="onTranslate"></Button>
+	        <Button x:Name="callButton" Text="Call" IsEnabled="False" Clicked="OnCall"></Button>
+	        <Button x:Name="callButtonHistory" Text="Call History" IsEnabled="False" Clicked="CallButtonHistory_OnClicked"></Button>
+
+	        <Button Text="Click me" Clicked ="Button_OnClicked"></Button>
+
+
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>
