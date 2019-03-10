@@ -2,12 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:StartXamarin"
-             x:Class="StartXamarin.MainPage">
+             x:Class="StartXamarin.MainPage"
+             Title ="자마린 테스트 프로젝트">
 
     <StackLayout Orientation="Vertical">
         <Label Text="Welcome to Xamarin.Forms!" />
 
 		<Button Text ="Show CallPhone" Clicked="CallPhone_OnClicked"/>
+
+	    <Button Text ="Do Too" Clicked="DoToo_OnClicked"/>
     </StackLayout>
 
 </ContentPage>

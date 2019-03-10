@@ -143,6 +143,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>4.9.1</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.5.231</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
   </ItemGroup>

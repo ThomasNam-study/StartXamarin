@@ -24,7 +24,8 @@ namespace StartXamarin.Droid
 	        Instance = this;
 
 			global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+	        Bootstrapper.Init ();
+			LoadApplication (new App());
         }
     }
 }
