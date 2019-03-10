@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 
 namespace StartXamarin.Droid
 {
@@ -25,6 +26,10 @@ namespace StartXamarin.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 	        Bootstrapper.Init ();
+
+	        CarouselViewRenderer.Init ();
+
+			Xamarin.Essentials.Platform.Init (this, savedInstanceState);
 			LoadApplication (new App());
         }
     }
