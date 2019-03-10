@@ -10,6 +10,8 @@
 
 		<Button Text ="Show CallPhone" Clicked="CallPhone_OnClicked"/>
 
+	    <Button Text ="Show Planetary" Clicked="ShowPlanet_OnClicked" />
+
 	    <Button Text ="Do Too" Clicked="DoToo_OnClicked"/>
 
 		<Button Text ="스와이퍼" Clicked="Swiper_OnClicked"/>

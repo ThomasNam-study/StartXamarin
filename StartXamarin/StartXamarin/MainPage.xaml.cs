@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StartXamarin.SubModule.Callphone;
+using StartXamarin.SubModule.Planetary;
 using StartXamarin.Views.DoToo;
 using Xamarin.Forms;
 using Swiper = StartXamarin.SubModule.Swiper.Swiper;
@@ -30,6 +31,11 @@ namespace StartXamarin
 		private async void Swiper_OnClicked (object sender, EventArgs e)
 		{
 			await Navigation.PushAsync (new SubModule.Swiper.Swiper ());
+		}
+
+		private async void ShowPlanet_OnClicked (object sender, EventArgs e)
+		{
+			await Navigation.PushAsync (new PlanetaryPage ());
 		}
 	}
 }
