@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StartXamarin.SubModule.Blog10.TenBlogPage"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             Title="Xamarin 10 Days"
+             iOS:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Margin="16,20,16,0">
+            <Entry Placeholder="Enter your name" x:Name="nameEntry"></Entry>
+            <Button Text="Say Hello" Clicked="SayHello_OnClicked"></Button>
+            <Label x:Name="greetingLabel" Text="Hello stranger, welcome to 10 Days of Xamarin" FontSize="20"></Label>
+            <Button Text="2Day Start" Clicked="TwoDayStart_OnClicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

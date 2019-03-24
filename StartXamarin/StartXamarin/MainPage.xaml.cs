@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StartXamarin.SubModule.Blog10;
 using StartXamarin.SubModule.Callphone;
 using StartXamarin.SubModule.Planetary;
 using StartXamarin.SubModule.TabViewTest;
@@ -43,5 +44,10 @@ namespace StartXamarin
 		{
 			await Navigation.PushAsync (new MyTabView ());
 		}
+
+	    private async void TenDayStart_OnClicked (object sender, EventArgs e)
+	    {
+	        await Navigation.PushAsync(new TenBlogPage());
+        }
 	}
 }

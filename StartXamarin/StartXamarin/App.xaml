@@ -20,5 +20,35 @@
 	    <Color x:Key="CompletedColor">#1C8859</Color>
 	    <Color x:Key="ActiveColor">#D3D3D3</Color>
 
+        <Color x:Key="mainColor">#362673</Color>
+        <Color x:Key="whiteColor">#EEEEEE</Color>
+        <Color x:Key="blackColor">#1C1C1C</Color>
+        <Color x:Key="accentColor">#4392F1</Color>
+        <Color x:Key="destructiveColor">#EF798A</Color>
+        <Color x:Key="secondarynColor">#BFBFBF</Color>
+
+        <Style x:Key="mainButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource accentColor}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource whiteColor}"></Setter>
+        </Style>
+
+        <Style x:Key="cancelButtonStyle" TargetType="Button" BasedOn="{StaticResource mainButtonStyle}">
+            <Setter Property="BackgroundColor" Value="{StaticResource secondarynColor}"></Setter>
+        </Style>
+
+        <Style x:Key="deleteButtonStyle" TargetType="Button" BasedOn="{StaticResource mainButtonStyle}">
+            <Setter Property="BackgroundColor" Value="{StaticResource destructiveColor}"></Setter>
+        </Style>
+
+        <Style x:Key="mainEntryStyle" TargetType="Entry">
+            <Setter Property="PlaceholderColor" Value="{StaticResource secondarynColor}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource blackColor}"></Setter>
+        </Style>
+
+        <Style x:Key="mainEditorStyle" TargetType="Editor">
+            <Setter Property="PlaceholderColor" Value="{StaticResource secondarynColor}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource blackColor}"></Setter>
+        </Style>
+
 	</Application.Resources>
 </Application>
