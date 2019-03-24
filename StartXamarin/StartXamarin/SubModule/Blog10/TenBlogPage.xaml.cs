@@ -34,6 +34,10 @@ namespace StartXamarin.SubModule.Blog10
 	        await Navigation.PushAsync (new TenBlog2Page ());
 	    }
 
-	    
+
+	    private async void FiveDayStart_OnClicked (object sender, EventArgs e)
+	    {
+	        await Navigation.PushAsync(new TenBlogList());
+        }
 	}
 }

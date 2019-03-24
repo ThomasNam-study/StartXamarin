@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SQLite;
+using StartXamarin.SubModule.Blog10.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,8 +38,31 @@ namespace StartXamarin.SubModule.Blog10
 
 	    private void SaveButton_OnClicked (object sender, EventArgs e)
 	    {
-	        titleEntry.Text = "";
-	        contentEditor.Text = "";
+	        Experience newExp = new Experience ()
+	        {
+                Title = titleEntry.Text,
+                Content = contentEditor.Text,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+	        };
+
+	        int insertedItems = 0;
+
+	        using (SQLiteConnection conn = new SQLiteConnection (App.DatabasePath))
+	        {
+	            conn.CreateTable<Experience> ();
+	            insertedItems = conn.Insert (newExp);
+	        }
+
+	        if (insertedItems > 0)
+	        {
+	            titleEntry.Text = "";
+	            contentEditor.Text = "";
+            }
+	        else
+	        {
+	            DisplayAlert ("Error", "There was an error inserting the Experience", "Please try again", "OK");
+	        }
 	    }
 
 	    private async void Cancel_OnClicked (object sender, EventArgs e)

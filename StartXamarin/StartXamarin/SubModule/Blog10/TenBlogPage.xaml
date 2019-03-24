@@ -11,6 +11,7 @@
             <Button Text="Say Hello" Clicked="SayHello_OnClicked"></Button>
             <Label x:Name="greetingLabel" Text="Hello stranger, welcome to 10 Days of Xamarin" FontSize="20"></Label>
             <Button Text="2Day Start" Clicked="TwoDayStart_OnClicked"></Button>
+            <Button Text="5Day Start" Clicked="FiveDayStart_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
