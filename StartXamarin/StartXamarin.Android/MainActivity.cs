@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using CarouselView.FormsPlugin.Android;
+using Environment = System.Environment;
 
 namespace StartXamarin.Droid
 {
@@ -29,8 +30,14 @@ namespace StartXamarin.Droid
 
 	        CarouselViewRenderer.Init ();
 
-			Xamarin.Essentials.Platform.Init (this, savedInstanceState);
-			LoadApplication (new App());
+            string fileName = "database.db3";
+
+            string folderPath = System.Environment.GetFolderPath (Environment.SpecialFolder.MyDocuments);
+
+            var fullPath = Path.Combine (folderPath, fileName);
+
+            Xamarin.Essentials.Platform.Init (this, savedInstanceState);
+			LoadApplication (new App(fullPath));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using CarouselView.FormsPlugin.iOS;
+﻿using System;
+using System.IO;
+using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using UIKit;
 
@@ -23,7 +25,12 @@ namespace StartXamarin.iOS
 
 	        CarouselViewRenderer.Init ();
 
-			LoadApplication (new App());
+            string fileName = "database.db3";
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
+            string fullPath = Path.Combine(folderPath, fileName); //Added using System.IO;
+ 
+
+            LoadApplication(new App(fileName));
 
             return base.FinishedLaunching(app, options);
         }

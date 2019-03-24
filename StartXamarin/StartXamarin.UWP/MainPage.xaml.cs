@@ -21,7 +21,13 @@ namespace StartXamarin.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new StartXamarin.App());
+            string fileName = "database.db3";
+
+            string folderPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            var fullPath = Path.Combine(folderPath, fileName);
+
+            LoadApplication(new StartXamarin.App(fullPath));
         }
     }
 }

@@ -10,11 +10,15 @@ namespace StartXamarin
 	{
 		public static IList<string> PhoneNumbers { get; set; }
 
-		public App ()
+	    public static string DatabasePath;
+
+		public App (string databasePath)
 		{
 			InitializeComponent ();
 
-			PhoneNumbers = new List<string> ();
+		    DatabasePath = databasePath;
+
+            PhoneNumbers = new List<string> ();
 
 			MainPage = new NavigationPage(new MainPage ());
 		}
