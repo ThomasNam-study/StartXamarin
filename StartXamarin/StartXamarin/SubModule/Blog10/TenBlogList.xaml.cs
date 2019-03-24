@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using SQLite;
 using StartXamarin.SubModule.Blog10.Models;
 using Xamarin.Forms;
@@ -13,10 +17,17 @@ namespace StartXamarin.SubModule.Blog10
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TenBlogList : ContentPage
 	{
-		public TenBlogList ()
+	    
+
+        public TenBlogList ()
 		{
 			InitializeComponent ();
-		}
+
+		    
+
+        }
+
+	    
 
 	    private async void NewItem_OnClicked (object sender, EventArgs e)
 	    {
@@ -27,10 +38,13 @@ namespace StartXamarin.SubModule.Blog10
 	    {
 	        base.OnAppearing ();
 
-	        ReadExp ();
+	        
+            ReadExp ();
 
 	    }
-        
+
+	    
+
 	    private void ReadExp ()
 	    {
 	        using (SQLiteConnection conn = new SQLiteConnection (App.DatabasePath))
