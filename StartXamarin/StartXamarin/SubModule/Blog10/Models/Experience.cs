@@ -19,6 +19,16 @@ namespace StartXamarin.SubModule.Blog10.Models
 
         public DateTime UpdatedAt { get; set; }
 
+
+        public string VenueName { get; set; } // NEW
+
+        public string VenueCategory { get; set; } // NEW
+
+        public float VenueLat { get; set; } // NEW
+
+        public float VenueLng { get; set; } // NEW
+
+
         public override string ToString ()
         {
             return Title;

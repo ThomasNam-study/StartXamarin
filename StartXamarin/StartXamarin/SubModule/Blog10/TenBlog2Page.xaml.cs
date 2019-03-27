@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Permissions;
@@ -65,8 +67,12 @@ namespace StartXamarin.SubModule.Blog10
                 Title = titleEntry.Text,
                 Content = contentEditor.Text,
                 CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
-	        };
+                UpdatedAt = DateTime.Now,
+	            VenueName = venueNameLabel.Text,
+	            VenueCategory = venueCategoryLabel.Text,
+	            VenueLat = float.Parse(venueCoordinatesLabel.Text.Split(',')[0]),
+	            VenueLng = float.Parse(venueCoordinatesLabel.Text.Split(',')[1])
+            };
 
 	        int insertedItems = 0;
 
@@ -78,8 +84,11 @@ namespace StartXamarin.SubModule.Blog10
 
 	        if (insertedItems > 0)
 	        {
-	            titleEntry.Text = "";
-	            contentEditor.Text = "";
+	            titleEntry.Text = string.Empty;
+	            contentEditor.Text = string.Empty;
+	            venueNameLabel.Text = string.Empty;
+	            venueCategoryLabel.Text = string.Empty;
+	            venueCoordinatesLabel.Text = string.Empty;
             }
 	        else
 	        {
@@ -126,12 +135,57 @@ namespace StartXamarin.SubModule.Blog10
 	    {
 	        position = await locator.GetPositionAsync();
 
-	        await locator.StartListeningAsync(TimeSpan.FromMinutes(30), 500);
+            if (!locator.IsListening)
+                await locator.StartListeningAsync(TimeSpan.FromMinutes(30), 500);
 	    }
 
 	    protected override void OnDisappearing()
 	    {
 	        locator.StopListeningAsync();
 	    }
-    }
+
+	    private async void SearchEntry_OnTextChanged(object sender, TextChangedEventArgs e)
+	    {
+	        if (!string.IsNullOrWhiteSpace(searchEntry.Text))
+	        {
+	            string url = $"https://api.foursquare.com/v2/venues/search?ll={position.Latitude},{position.Longitude}&radius=500&query={searchEntry.Text}&limit=3&client_id={Helpers.Constants.FOURSQR_CLIENT_ID}&client_secret={Helpers.Constants.FOURSQR_CLIENT_SECRET}&v={DateTime.Now.ToString("yyyyMMdd")}";
+
+	            using (HttpClient client = new HttpClient())
+	            {
+	                string json = await client.GetStringAsync(url);
+
+	                Search searchResult = JsonConvert.DeserializeObject<Search>(json);
+
+	                venuesListView.IsVisible = true;
+	                venuesListView.ItemsSource = searchResult.response.venues;
+
+	            }
+            }
+            else
+	        {
+	            venuesListView.IsVisible = false;
+	        }
+	        
+	    }
+
+	    private void VenuesListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+	    {
+	        if (venuesListView.SelectedItem != null)
+	        {
+	            selectedVenueStackLayout.IsVisible = true;
+	            searchEntry.Text = string.Empty;
+	            venuesListView.IsVisible = false;
+
+                Venue selectedVenue = venuesListView.SelectedItem as Venue;
+
+	            venueNameLabel.Text = selectedVenue.name;
+                venueCategoryLabel.Text = selectedVenue.categories.FirstOrDefault()?.name;
+	            venueCoordinatesLabel.Text = $"{selectedVenue.location.lat:0.000}, {selectedVenue.location.lng:0.000}";
+	        }
+	        else
+	        {
+	            selectedVenueStackLayout.IsVisible = false;
+	        }
+	    }
+	}
 }

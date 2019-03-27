@@ -5,7 +5,34 @@
     <ContentPage.Content>
         <StackLayout Margin="16,20">
         <Entry x:Name="titleEntry" Placeholder="Title of the experience" Style="{StaticResource mainEntryStyle }" TextChanged="TitleEntry_OnTextChanged"></Entry>
-        <Editor x:Name="contentEditor" VerticalOptions="FillAndExpand" Placeholder="Write you experience..." Style="{StaticResource mainEditorStyle}" TextChanged="ContentEditor_OnTextChanged"></Editor>
+
+
+            <Entry x:Name="searchEntry"
+                   Style="{StaticResource mainEntryStyle}"
+                   Placeholder="Search a nearby venue..."
+                   TextChanged="SearchEntry_OnTextChanged"/>
+            <ListView x:Name="venuesListView"
+                      ItemSelected="VenuesListView_OnItemSelected"
+                      HeightRequest="20"
+                      Margin="-16,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding name}"
+                                  Detail="{Binding location.distance, StringFormat='{0} meters away'}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout x:Name="selectedVenueStackLayout"
+                         IsVisible="false">
+                <Label x:Name="venueNameLabel"
+                       Style="{StaticResource titleLabelStyle}"/>
+                <Label x:Name="venueCategoryLabel"
+                       Style="{StaticResource subtitleLabelStyle}"/>
+                <Label x:Name="venueCoordinatesLabel"
+                       Style="{StaticResource detailLabelStyle}"/>
+            </StackLayout>
+
+            <Editor x:Name="contentEditor" VerticalOptions="FillAndExpand" Placeholder="Write you experience..." Style="{StaticResource mainEditorStyle}" TextChanged="ContentEditor_OnTextChanged"></Editor>
             <Button Text="Save" x:Name="saveButton" Style="{StaticResource mainButtonStyle}" IsEnabled="False" Clicked="SaveButton_OnClicked"></Button>
         <Button Text="Cancel" Style="{StaticResource cancelButtonStyle}" Clicked="Cancel_OnClicked"></Button>
         </StackLayout>
