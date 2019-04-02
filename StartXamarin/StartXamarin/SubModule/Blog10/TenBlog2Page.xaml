@@ -41,8 +41,8 @@
             </StackLayout>
 
             <Editor x:Name="contentEditor" VerticalOptions="FillAndExpand" Placeholder="Write you experience..." Style="{StaticResource mainEditorStyle}" TextChanged="ContentEditor_OnTextChanged" Text="{Binding Content, Mode=TwoWay}"></Editor>
-            <Button Text="Save" x:Name="saveButton" Style="{StaticResource mainButtonStyle}" IsEnabled="{Binding CanSave}" Clicked="SaveButton_OnClicked"></Button>
-        <Button Text="Cancel" Style="{StaticResource cancelButtonStyle}" Clicked="Cancel_OnClicked"></Button>
+            <Button Text="Save" x:Name="saveButton" Style="{StaticResource mainButtonStyle}" IsEnabled="{Binding CanSave}" Command="{Binding SaveCommand}" CommandParameter="{Binding CanSave}"></Button>
+        <Button Text="Cancel" Style="{StaticResource cancelButtonStyle}" Command="{Binding CancelCommand}" ></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

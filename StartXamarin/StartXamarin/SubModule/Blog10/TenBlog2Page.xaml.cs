@@ -68,6 +68,7 @@ namespace StartXamarin.SubModule.Blog10
 	        GetLocationPermission();
         }
 
+        /*
 	    private void SaveButton_OnClicked (object sender, EventArgs e)
 	    {
 	        Experience newExp = new Experience ()
@@ -101,6 +102,7 @@ namespace StartXamarin.SubModule.Blog10
 	            DisplayAlert ("Error", "There was an error inserting the Experience", "Please try again", "OK");
 	        }
 	    }
+        */
 
 	    private async void Cancel_OnClicked (object sender, EventArgs e)
 	    {
