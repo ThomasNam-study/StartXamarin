@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace StartXamarin.SubModule.Blog10.Models
@@ -26,6 +27,13 @@ namespace StartXamarin.SubModule.Blog10.Models
         public string cc { get; set; }
         public string country { get; set; }
         public IList<string> formattedAddress { get; set; }
+
+        // add to the Location class
+        private string coordinates;
+        public string Coordinates
+        {
+            get { return $"{lat:0.000}, {lng:0.000}"; }
+        }
     }
 
     public class Icon
@@ -52,6 +60,14 @@ namespace StartXamarin.SubModule.Blog10.Models
         public IList<Category> categories { get; set; }
         public string referralId { get; set; }
         public bool hasPerk { get; set; }
+
+        // add to the Venue class
+        private string mainCategory;
+        public string MainCategory
+        {
+            // added using System.Linq;
+            get { return categories.FirstOrDefault()?.name; }
+        }
     }
 
     public class Response

@@ -4,36 +4,44 @@
              x:Class="StartXamarin.SubModule.Blog10.TenBlog2Page">
     <ContentPage.Content>
         <StackLayout Margin="16,20">
-        <Entry x:Name="titleEntry" Placeholder="Title of the experience" Style="{StaticResource mainEntryStyle }" TextChanged="TitleEntry_OnTextChanged"></Entry>
+        <Entry x:Name="titleEntry" Placeholder="Title of the experience" Style="{StaticResource mainEntryStyle }" TextChanged="TitleEntry_OnTextChanged" Text="{Binding Title, Mode=TwoWay}"></Entry>
 
 
             <Entry x:Name="searchEntry"
                    Style="{StaticResource mainEntryStyle}"
                    Placeholder="Search a nearby venue..."
-                   TextChanged="SearchEntry_OnTextChanged"/>
+                   TextChanged="SearchEntry_OnTextChanged"
+                   Text="{Binding Query, Mode=TwoWay}"
+                   />
             <ListView x:Name="venuesListView"
-                      ItemSelected="VenuesListView_OnItemSelected"
+                      SelectedItem="{Binding SelectedVenue, Mode=TwoWay}"
+                      IsVisible="{Binding ShowVenues}"
                       HeightRequest="20"
                       Margin="-16,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding name}"
-                                  Detail="{Binding location.distance, StringFormat='{0} meters away'}"/>
+                        <TextCell Text="{Binding name}" Detail="{Binding location.distance, StringFormat='{0} meters away'}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <StackLayout x:Name="selectedVenueStackLayout"
-                         IsVisible="false">
+                         IsVisible="{Binding ShowSelectedVenue}">
                 <Label x:Name="venueNameLabel"
-                       Style="{StaticResource titleLabelStyle}"/>
+                       Style="{StaticResource titleLabelStyle}"
+                       Text="{Binding SelectedVenue.name}"
+                       />
                 <Label x:Name="venueCategoryLabel"
-                       Style="{StaticResource subtitleLabelStyle}"/>
+                       Style="{StaticResource subtitleLabelStyle}"
+                       Text="{Binding SelectedVenue.MainCategory}"
+                       />
                 <Label x:Name="venueCoordinatesLabel"
-                       Style="{StaticResource detailLabelStyle}"/>
+                       Style="{StaticResource detailLabelStyle}"
+                       Text="{Binding SelectedVenue.location.Coordinates}"
+                       />
             </StackLayout>
 
-            <Editor x:Name="contentEditor" VerticalOptions="FillAndExpand" Placeholder="Write you experience..." Style="{StaticResource mainEditorStyle}" TextChanged="ContentEditor_OnTextChanged"></Editor>
-            <Button Text="Save" x:Name="saveButton" Style="{StaticResource mainButtonStyle}" IsEnabled="False" Clicked="SaveButton_OnClicked"></Button>
+            <Editor x:Name="contentEditor" VerticalOptions="FillAndExpand" Placeholder="Write you experience..." Style="{StaticResource mainEditorStyle}" TextChanged="ContentEditor_OnTextChanged" Text="{Binding Content, Mode=TwoWay}"></Editor>
+            <Button Text="Save" x:Name="saveButton" Style="{StaticResource mainButtonStyle}" IsEnabled="{Binding CanSave}" Clicked="SaveButton_OnClicked"></Button>
         <Button Text="Cancel" Style="{StaticResource cancelButtonStyle}" Clicked="Cancel_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
