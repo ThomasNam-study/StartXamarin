@@ -33,5 +33,15 @@ namespace StartXamarin.SubModule.Blog10.Models
         {
             return Title;
         }
+
+        public static List<Experience> GetExperiences()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Experience>();
+
+                return conn.Table<Experience>().ToList();
+            }
+        }
     }
 }

@@ -39,23 +39,7 @@ namespace StartXamarin.SubModule.Blog10
 	    {
 	        base.OnAppearing ();
 
-	        
-            ReadExp ();
-
-	    }
-
-	    
-
-	    private void ReadExp ()
-	    {
-	        using (SQLiteConnection conn = new SQLiteConnection (App.DatabasePath))
-	        {
-	            conn.CreateTable <Experience> ();
-
-	            List<Experience> experiences = conn.Table<Experience> ().ToList ();
-
-	            expListView.ItemsSource = experiences;
-	        }
+            viewModel.ReadExperiences();
 	    }
 	}
 }
